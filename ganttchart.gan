@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2024-04-07" view-index="0" gantt-divider-location="384" resource-divider-location="300" version="3.1.3103" locale="en_US">
+    <description/>
+    <view zooming-state="default:6" id="gantt-chart">
+        <field id="tpd3" name="Name" width="225" order="0"/>
+        <field id="tpd4" name="Begin date" width="74" order="1"/>
+        <field id="tpd5" name="End date" width="79" order="2"/>
+        <option id="taskLabelUp" value="name"/>
+        <option id="color.recent">
+            <![CDATA[#990099 #eeeeee #00cc00 #000000 #00ffff #66ffff #0066ff #ccff66 #cc0033]]>
+        </option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="209" order="0"/>
+        <field id="1" name="Default role" width="85" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="2" name="Phase 1" color="#00ffff" meeting="false" start="2024-04-22" duration="5" complete="0" thirdDate="2021-02-04" thirdDate-constraint="0" expand="true">
+            <depend id="4" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="164" name="Company Visit" color="#990099" meeting="true" start="2024-04-22" duration="0" complete="0" thirdDate="2020-11-16" thirdDate-constraint="0" expand="true"/>
+        <task id="39" name="Report 1 Due" color="#990099" meeting="true" start="2024-04-26" duration="0" complete="0" thirdDate="2020-11-16" thirdDate-constraint="0" expand="true"/>
+        <task id="102" name="Personal Goals and Roles due" color="#990099" meeting="true" start="2024-04-26" duration="0" complete="0" thirdDate="2020-11-16" thirdDate-constraint="0" expand="true"/>
+        <task id="4" name="Phase 2" color="#00cc00" meeting="false" start="2024-04-29" duration="8" complete="0" thirdDate="2021-02-04" thirdDate-constraint="0" expand="true">
+            <depend id="24" type="2" difference="2" hardness="Strong"/>
+        </task>
+        <task id="91" name="Client Presentation" color="#990099" meeting="true" start="2024-05-08" duration="0" complete="0" thirdDate="2023-04-18" thirdDate-constraint="0" expand="true"/>
+        <task id="53" name="Report 2 due" color="#990099" meeting="true" start="2024-05-07" duration="0" complete="0" thirdDate="2023-05-08" thirdDate-constraint="0" expand="true"/>
+        <task id="146" name="Buddycheck 1 due" color="#990099" meeting="true" start="2024-05-10" duration="0" complete="0" thirdDate="2023-05-08" thirdDate-constraint="0" expand="true"/>
+        <task id="24" name="Phase 3" color="#cc0033" meeting="false" start="2024-05-13" duration="15" complete="0" thirdDate="2021-02-15" thirdDate-constraint="0" expand="true">
+            <depend id="27" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="56" name="Report 3 due" color="#990099" meeting="true" start="2024-05-31" duration="0" complete="0" thirdDate="2020-11-16" thirdDate-constraint="0" expand="true"/>
+        <task id="129" name="Gitlab Documentation due for review" color="#990099" meeting="true" start="2024-05-31" duration="0" complete="0" thirdDate="2020-11-16" thirdDate-constraint="0" expand="true"/>
+        <task id="142" name="Buddycheck 2 Due" color="#990099" meeting="true" start="2024-05-31" duration="0" complete="0" thirdDate="2020-11-16" thirdDate-constraint="0" expand="true"/>
+        <task id="27" name="Phase 4" color="#0066ff" meeting="false" start="2024-06-03" duration="11" complete="0" thirdDate="2021-01-04" thirdDate-constraint="0" expand="true"/>
+        <task id="131" name="Documentation Feedback due" color="#990099" meeting="true" start="2024-06-07" duration="0" complete="0" thirdDate="2024-04-22" thirdDate-constraint="0" expand="true"/>
+        <task id="60" name="Final Presentation" color="#990099" meeting="true" start="2024-06-13" duration="0" complete="0" thirdDate="2020-11-16" thirdDate-constraint="0" expand="true"/>
+        <task id="37" name="Final Report due" color="#990099" meeting="true" start="2024-06-17" duration="0" complete="0" thirdDate="2020-11-16" thirdDate-constraint="0" expand="true"/>
+        <task id="168" name="Final GitLab documentation due" color="#990099" meeting="true" start="2024-06-17" duration="0" complete="0" thirdDate="2020-11-16" thirdDate-constraint="0" expand="true"/>
+        <task id="112" name="Individual Reflection Report due" color="#990099" meeting="true" start="2024-06-18" duration="0" complete="0" thirdDate="2020-11-16" thirdDate-constraint="0" expand="true"/>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+</project>
