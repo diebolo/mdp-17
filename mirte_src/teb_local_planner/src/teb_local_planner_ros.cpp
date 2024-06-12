@@ -393,21 +393,21 @@ uint32_t TebLocalPlannerROS::computeVelocityCommands(const geometry_msgs::PoseSt
     costmap_2d::calculateMinAndMaxDistances(footprint_spec_, robot_inscribed_radius_, robot_circumscribed_radius);
   }
 
-  bool feasible = planner_->isTrajectoryFeasible(costmap_model_.get(), footprint_spec_, robot_inscribed_radius_, robot_circumscribed_radius, cfg_.trajectory.feasibility_check_no_poses, cfg_.trajectory.feasibility_check_lookahead_distance);
-  if (!feasible)
-  {
-    cmd_vel.twist.linear.x = cmd_vel.twist.linear.y = cmd_vel.twist.angular.z = 0;
+  // bool feasible = planner_->isTrajectoryFeasible(costmap_model_.get(), footprint_spec_, robot_inscribed_radius_, robot_circumscribed_radius, cfg_.trajectory.feasibility_check_no_poses, cfg_.trajectory.feasibility_check_lookahead_distance);
+  // if (!feasible)
+  // {
+  //   cmd_vel.twist.linear.x = cmd_vel.twist.linear.y = cmd_vel.twist.angular.z = 0;
 
-    // now we reset everything to start again with the initialization of new trajectories.
-    planner_->clearPlanner();
-    ROS_WARN("TebLocalPlannerROS: trajectory is not feasible. Resetting planner...");
+  //   // now we reset everything to start again with the initialization of new trajectories.
+  //   planner_->clearPlanner();
+  //   ROS_WARN("TebLocalPlannerROS: trajectory is not feasible. Resetting planner...");
     
-    ++no_infeasible_plans_; // increase number of infeasible solutions in a row
-    time_last_infeasible_plan_ = ros::Time::now();
-    last_cmd_ = cmd_vel.twist;
-    message = "teb_local_planner trajectory is not feasible";
-    return mbf_msgs::ExePathResult::NO_VALID_CMD;
-  }
+  //   ++no_infeasible_plans_; // increase number of infeasible solutions in a row
+  //   time_last_infeasible_plan_ = ros::Time::now();
+  //   last_cmd_ = cmd_vel.twist;
+  //   message = "teb_local_planner trajectory is not feasible";
+  //   return mbf_msgs::ExePathResult::NO_VALID_CMD;
+  // }
 
   // Get the velocity command for this sampling interval
   if (!planner_->getVelocityCommand(cmd_vel.twist.linear.x, cmd_vel.twist.linear.y, cmd_vel.twist.angular.z, cfg_.trajectory.control_look_ahead_poses))

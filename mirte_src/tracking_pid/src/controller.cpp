@@ -324,6 +324,15 @@ geometry_msgs::Twist Controller::update(const geometry_msgs::Transform current, 
     error_integral_lat = 0.0;
     error_integral_ang = 0.0;
   }
+
+  // Cap the x velocity in plus and minus
+  if (output_combined.linear.x > max_x_velocity)
+    output_combined.linear.x = max_x_velocity;
+  if (output_combined.linear.x < -1*max_x_backward_velocity)
+    output_combined.linear.x = -1*max_x_backward_velocity;
+
+
+
   // ROS_INFO("errors (in cm/deg): (%.2f, %.2f, %.2f)", error_x*100, error_y*100,error_th);
   return output_combined;
 }
@@ -444,6 +453,9 @@ void Controller::configure(const tracking_pid::PidConfig& config)
   Kp_ang = config.Kp_ang;
   Ki_ang = config.Ki_ang;
   Kd_ang = config.Kd_ang;
+
+  max_x_velocity = config.max_x_velocity;
+  max_x_backward_velocity = config.max_x_backward_velocity;
 
   l = config.l;
   debug_enabled = config.controller_debug_enabled;

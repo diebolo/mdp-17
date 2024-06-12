@@ -485,10 +485,15 @@ class InterpolatorNode(object):
             rospy.logdebug_throttle(5.0, "Path_interpolator is paused")
             return
 
+        current_real = event.current_real
+
         if not self._current_section or rospy.Time.now() > self._current_section.section_end_time:  # or when past end time of current section, go to next
+
             try:
                 start, end = self._sections.pop(0)
-                self._current_section = SectionInterpolation(start, end, event.current_real, self._target_x_vel, self._target_x_acc, self._target_yaw_vel, self._target_yaw_acc)
+
+                current_real = rospy.Time.now()
+                self._current_section = SectionInterpolation(start, end, current_real, self._target_x_vel, self._target_x_acc, self._target_yaw_vel, self._target_yaw_acc)
                 rospy.loginfo("Starting new {}. duration_for_section = {}".format(self._current_section, self._current_section.duration_for_section.to_sec()))
 
                 if self.flip_for_axis:
@@ -511,7 +516,7 @@ class InterpolatorNode(object):
                     self.stop_path()
                 return
 
-        duration_on_section = event.current_real - self._current_section.section_start_time
+        duration_on_section = current_real - self._current_section.section_start_time
 
         # Distance between duplicated poses is 0, so we can't do the division below.
         # If the duration is 0, then we're done immediately.
@@ -525,7 +530,7 @@ class InterpolatorNode(object):
             progress_on_section = 1
 
         tp = self._current_section.interpolate_with_acceleration(rospy.Time.now())
-        tp.pose.header.stamp = event.current_real
+        tp.pose.header.stamp = current_real
 
 
         # TODO: Rotate in the corners, using controller mode 3 tp.controller.data = 3

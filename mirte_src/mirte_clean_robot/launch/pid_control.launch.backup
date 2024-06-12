@@ -1,6 +1,6 @@
 <launch>
 <!-- Interpolator -->
-<node name="interpolator" pkg="tracking_pid" type="path_interpolator">
+<node name="interpolator" pkg="tracking_pid" type="path_interpolator" output="screen">
     <param name="target_x_vel" value="0.3"/>
     <param name="target_x_acc" value="3.0"/>
     <remap from="path" to="coverage_path/path1"/>
@@ -18,6 +18,8 @@
     <param name="Kp_lat" value="0.8"/>
     <param name="Ki_lat" value="0.2"/>
     <param name="Kd_lat" value="2.3"/>
+    <param name="max_x_velocity" value="0.3"/>
+    <param name="max_x_backward_velocity" value="0.1"/>
     <param name="holonomic_robot" value="False"/>
     <param name="map_frame" value="map"/>
     <param name="base_link_frame" value="base_link"/>

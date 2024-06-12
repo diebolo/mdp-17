@@ -20,7 +20,7 @@ TebLocalPlannerROS:
   ## costmap_converter/CostmapToLinesDBSRANSAC, costmap_converter/CostmapToLinesDBSMCCH, costmap_converter/CostmapToPolygonsDBSMCCH
   #costmap_converter/CostmapToLinesDBSRANSAC:
   costmap_converter/CostmapToLinesDBSMCCH:
-    cluster_max_distance: 0.4
-    cluster_min_pts: 2
-    cluster_max_pts: 30
-    convex_hull_min_pt_separation: 0.1
+    cluster_max_distance: 0.2
+    cluster_min_pts: 10
+    cluster_max_pts: 40
+    convex_hull_min_pt_separation: 0.05

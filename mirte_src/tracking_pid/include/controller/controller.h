@@ -132,6 +132,10 @@ protected:
   double cutoff_frequency_lat = -1.0f;
   double cutoff_frequency_ang = -1.0f;
 
+  // Max velocities
+  double max_x_velocity = 0.0f;
+  double max_x_backward_velocity = 0.0f;
+
   // Upper and lower saturation limits
   double upper_limit = 10.0f;
   double lower_limit = -10.0f;

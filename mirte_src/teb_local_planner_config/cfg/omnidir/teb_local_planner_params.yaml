@@ -16,18 +16,18 @@ TebLocalPlannerROS:
   publish_feedback: True
     
   # Robot
-  max_vel_x: 2.0
-  min_vel_x: 1.5
-  max_vel_x_backwards: 2.0
-  max_vel_y: 2.0
-  min_vel_y: 1.5
+  max_vel_x: 0.5
+  min_vel_x: 0.0
+  max_vel_x_backwards: 0.5
+  max_vel_y: 0.5
+  min_vel_y: 0.0
 
   max_vel_theta: 2.5
   min_vel_theta: 2.0
 
-  acc_lim_x: 10.0
-  acc_lim_y: 10.0
-  acc_lim_theta: 10.0
+  acc_lim_x: 1.0
+  acc_lim_y: 1.0
+  acc_lim_theta: 1.0
   min_turning_radius: 0.0 # omni-drive robot (can turn on place!)
 
   footprint_model:
@@ -35,14 +35,14 @@ TebLocalPlannerROS:
 
  # GoalTolerance
     
-  xy_goal_tolerance: 0.2
-  yaw_goal_tolerance: 0.5
+  xy_goal_tolerance: 0.3
+  yaw_goal_tolerance: 0.6
   free_goal_vel: False
   complete_global_plan: True
     
  # Obstacles
-  min_obstacle_dist: 0.1 # This value must also include our robot radius, since footprint_model is set to "point".
-  inflation_dist: 0.8
+  min_obstacle_dist: 0.05 # This value must also include our robot radius, since footprint_model is set to "point".
+  inflation_dist: 0.4
   include_costmap_obstacles: False
   costmap_obstacles_behind_robot_dist: 1.0
   obstacle_poses_affected: 15
@@ -84,8 +84,8 @@ costmap_converter/CostmapToLinesDBSMCCH:
   weight_kinematics_turning_radius: 1
   weight_optimaltime: 1 # must be > 0
   weight_shortest_path: 0
-  weight_obstacle: 400
-  weight_inflation: 0.5
+  weight_obstacle: 40.0
+  weight_inflation: 15.0
   weight_dynamic_obstacle: 10
   weight_dynamic_obstacle_inflation: 0.4
   weight_viapoint: 1
