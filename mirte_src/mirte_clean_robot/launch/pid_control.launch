@@ -1,6 +1,6 @@
 <launch>
 <!-- Interpolator -->
-<node name="interpolator" pkg="tracking_pid" type="path_interpolator" output="screen">
+<node name="interpolator" pkg="tracking_pid" type="path_interpolator">
     <param name="target_x_vel" value="0.22"/>
     <param name="target_x_acc" value="3.0"/>
     <remap from="path" to="coverage_path/path1"/>
@@ -12,8 +12,8 @@
     <remap from="local_trajectory" to="trajectory"/>
     <param name="controller_debug_enabled" value="True"/>
     <param name="l" value="0.1"/>
-    <param name="Kp_long" value="1.3"/>
-    <param name="Ki_long" value="0.05"/>
+    <param name="Kp_long" value="1.0"/>
+    <param name="Ki_long" value="0.0"/>
     <param name="Kd_long" value="0.5"/>
     <param name="Kp_lat" value="0.8"/>
     <param name="Ki_lat" value="0.2"/>

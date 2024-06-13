@@ -29,6 +29,8 @@ class ObstacleDetector:
 
         self.is_paused = False
 
+        self.lasttimeunpaused = time.time()
+
         rospy.init_node("stop_for_obstacles")
         rospy.loginfo("Initialized stop_for_obstacles")
         rospy.Subscriber(left_topic, Range, self.range_left_callback)
@@ -53,10 +55,14 @@ class ObstacleDetector:
         return config
 
     def range_left_callback(self, data: Range):
+        if data.range < 0.06:
+            return
         clamped_range = max(self.min_range, min(self.max_range, data.range))
         self.left_avg = (clamped_range * self.weight) + (self.left_avg * (1 - self.weight))
 
     def range_right_callback(self, data: Range):
+        if data.range < 0.06:
+            return
         clamped_range = max(self.min_range, min(self.max_range, data.range))
         self.right_avg = (clamped_range * self.weight) + (self.right_avg * (1 - self.weight))
 
@@ -75,10 +81,12 @@ class ObstacleDetector:
             self.i = 0
 
         if average < self.distance_stop:
-            if not self.is_paused:
+            if not self.is_paused and abs(self.lasttimeunpaused - time.time()) > 4:
                 self.pause_carrot(average)
-            elif time.time() - self.stop_time >= 15:
+            elif time.time() - self.stop_time >= 8:
                 self.unpause_carrot(average)
+
+
             if (time.time() - self.stop_time) % 5:
                 self.soundclient.play(SoundRequest.NEEDS_UNPLUGGING_BADLY, blocking=False)
         else:
@@ -98,8 +106,8 @@ class ObstacleDetector:
         self.is_paused = False
         rospy.loginfo(f"Sonar average: {average}")
         rospy.loginfo("Sonar untriggerd: Unpausing Robot")
-        self.soundclient.playWave(os.join(os.path.dirname(os.path.realpath(__file__)), 'cow-nature.wav'))
-
+        self.soundclient.playWave(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'cow-nature.wav'))
+        self.lasttimeunpaused = time.time()
 
     def spin(self):
         rospy.spin()

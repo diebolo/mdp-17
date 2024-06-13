@@ -89,7 +89,7 @@
   </include>
 
   <node name="stop_for_obstacles" pkg="mirte_clean_robot" type="stop_for_obstacles.py" output="screen">
-    <param name="distance_stop" value="0.3"/>
+    <param name="distance_stop" value="0.2"/>
   </node>
 
 
