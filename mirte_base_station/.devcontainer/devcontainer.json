@@ -1,0 +1,23 @@
+{
+	"name": "r1_noetic_gui_mdp",
+
+	"runArgs": [
+        "-it",
+		"--init",
+        "--env=DISPLAY=${localEnv:DISPLAY}",
+        "--env=QT_X11_NO_MITSHM=1",
+        "--volume=/tmp/.X11-unix:/tmp/.X11-unix:rw",
+        "--env=XAUTHORITY=/tmp/.docker.xauth",
+        "--volume=/tmp/.docker.xauth:/tmp/.docker.xauth",
+        "--net=host",
+        "--privileged"
+    ],
+
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"remoteUser": "vscode",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/MDP,type=bind,consistency=cached",
+	"workspaceFolder": "/MDP",
+    "overrideCommand": false
+}

@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="mirte-clean" type="state_control.py" name="smach_example_state_machine" output="screen"/>
+</launch>

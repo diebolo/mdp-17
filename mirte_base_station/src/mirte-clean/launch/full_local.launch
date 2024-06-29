@@ -1,0 +1,18 @@
+<launch>
+
+    <node pkg="mirte-clean" type="state_control.py" name="state_machine" output="screen"/>
+    
+    <node pkg="slam_toolbox" type="async_slam_toolbox_node" name="slam_toolbox" output="screen">
+        <rosparam command="load" file="$(find slam_toolbox)/config/mapper_params_online_async.yaml" />
+    </node>
+
+    <node pkg="frontier_exploration" type="frontier_exploration_node" respawn="false" name="explore" output="screen">
+        <rosparam command="load" file="$(find frontier_exploration)/config/params.yaml"/>
+        <remap from="costmap" to="/map"/>
+    </node>
+    <!-- <node name="shutdown_service_node" pkg="mirte-clean" type="shutdown_service.py" output="screen"/> -->
+
+    <include file="$(find area_division)/launch/area_path.launch">
+    </include>
+
+</launch>

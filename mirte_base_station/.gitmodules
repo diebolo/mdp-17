@@ -1,0 +1,9 @@
+[submodule "src/cpswarm"]
+	path = src/cpswarm
+	url = git@github.com:kevinlaban/cpswarm.git
+
+
+[submodule "src/mirte-ros-packages"]
+	path = src/mirte-ros-packages
+	url = https://github.com/mirte-robot/mirte-ros-packages
+
